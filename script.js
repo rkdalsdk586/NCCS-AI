@@ -8,8 +8,24 @@ const resultsSection = document.querySelector("#resultsSection");
 const winnerList = document.querySelector("#winnerList");
 const resultCount = document.querySelector("#resultCount");
 const toast = document.querySelector("#toast");
+const themeButton = document.querySelector("#themeButton");
 
 let winnerCount = 1;
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  const isDark = theme === "dark";
+  themeButton.setAttribute("aria-label", isDark ? "라이트 모드로 전환" : "다크 모드로 전환");
+  themeButton.title = isDark ? "라이트 모드" : "다크 모드";
+  localStorage.setItem("lottery-theme", theme);
+}
+
+themeButton.addEventListener("click", () => {
+  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(nextTheme);
+});
+
+applyTheme(document.documentElement.dataset.theme);
 
 function getParticipants() {
   return [...new Set(
