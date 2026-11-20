@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>제비뽑기</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div>
+          <p class="eyebrow">오늘의 당첨자를 정해보세요</p>
+          <h1>제비뽑기</h1>
+        </div>
+        <button class="icon-button" id="resetButton" type="button" aria-label="전체 초기화" title="전체 초기화">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 11a8.1 8.1 0 1 1-2.3-5.7L20 7.6M20 3v4.6h-4.6" />
+          </svg>
+        </button>
+      </header>
+
+      <section class="setup" aria-label="제비뽑기 설정">
+        <label class="field">
+          <span class="field-label">참가자</span>
+          <textarea id="participants" rows="7" placeholder="이름을 한 줄씩 입력하세요&#10;김철수&#10;이영희&#10;박민수"></textarea>
+        </label>
+
+        <div class="count-row">
+          <span class="field-label">당첨 인원</span>
+          <div class="stepper">
+            <button id="decreaseButton" type="button" aria-label="당첨 인원 줄이기">−</button>
+            <output id="winnerCount" aria-live="polite">1</output>
+            <button id="increaseButton" type="button" aria-label="당첨 인원 늘리기">＋</button>
+          </div>
+        </div>
+
+        <button class="draw-button" id="drawButton" type="button">
+          <span>제비 뽑기</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </button>
+      </section>
+
+      <section class="results" id="resultsSection" aria-live="polite" hidden>
+        <div class="results-heading">
+          <div>
+            <p class="eyebrow">축하합니다!</p>
+            <h2>당첨자</h2>
+          </div>
+          <span class="result-count" id="resultCount">0명</span>
+        </div>
+        <div class="winner-list" id="winnerList"></div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+    <script src="script.js"></script>
+  </body>
+</html>
